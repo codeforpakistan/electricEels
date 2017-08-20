@@ -8,5 +8,6 @@ import { Map } from './map/map.component';
 })
 export class AppComponent {
     title: string ='Electric Mapper';
-    
+    input: string ='Please Enter Address'
+    time: string ='please select time'
 }

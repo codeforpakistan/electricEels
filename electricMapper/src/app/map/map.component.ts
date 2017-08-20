@@ -11,10 +11,23 @@ export class Map {
     polygons: Array<Polygon>;
     clat: number = 33.7294;
     clng: number = 73.0931;
-
+    sectors: [number, number][][] = [[[33.698123, 73.037716], 
+                                      [33.706727, 73.05424], 
+                                      [33.692423, 73.065739], 
+                                      [33.677211, 73.07551]]];
+    /*                                   [[], 
+                                    [], 
+                                    [], 
+                                    []], 
+                                   [[], 
+                                    [], 
+                                    [], 
+                                    []]
+                                  ]
+*/
     constructor() {
         this.title = 'Islamabad';
-        this.polygons = [new Polygon(1, 1), new Polygon(2, 2), new Polygon(3, 3)];
+        this.polygons = this.sectors.map((s) => new Polygon(s));
     }
  
 }
@@ -24,10 +37,10 @@ class Polygon {
     clickable: boolean;
     color: number;
 
-    constructor(delLat:number, delLong:number) {
-        this.paths = [new Coords(33.7294+delLat, 73.0931+delLong), new Coords(33.7298-delLat, 73.0923+delLong), new Coords(33.7281+delLong, 73.0925-delLat)];
+    constructor(coords: [number, number][]) {
+        this.paths = coords.map((c) => new Coords(c[0], c[1]));
         this.clickable = true;
-        this.color = 800000;
+        this.color = 0o6600;
     }
 
 }
@@ -41,3 +54,5 @@ class Coords {
         this.lng = ln;
     }
 }
+
+
