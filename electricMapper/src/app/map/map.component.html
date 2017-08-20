@@ -1,0 +1,9 @@
+<h1>{{title}}</h1>
+
+<agm-map *ngFor="let pgon of polygons" [latitude]="clat" [longitude]="clng">
+  <agm-polygon [paths]="pgon.paths" [clickable]="pgon.clickable" [fillColor]="pgon.color">
+  </agm-polygon>
+</agm-map>
+
+
+
